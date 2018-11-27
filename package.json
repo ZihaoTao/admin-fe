@@ -1,0 +1,8 @@
+{
+  "name": "admin-fe",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ZihaoTao/admin-fe.git",
+  "author": "Zihao Tao <taozihao@uw.edu>",
+  "license": "MIT"
+}
