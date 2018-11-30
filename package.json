@@ -5,7 +5,7 @@
   "repository": "https://github.com/ZihaoTao/admin-fe.git",
   "author": "Zihao Tao <taozihao@uw.edu>",
   "license": "MIT",
-  "scripts" : {
+  "scripts": {
     "dev": "node_modules/.bin/webpack-dev-server",
     "dist": "node_modules/.bin/webpack -p"
   },
@@ -26,8 +26,8 @@
     "webpack-dev-server": "2.9.7"
   },
   "dependencies": {
-    "font-awesome": "^4.7.0",
     "react": "16.2.0",
-    "react-dom": "16.2.0"
+    "react-dom": "16.2.0",
+    "react-router-dom": "4.2.2"
   }
 }
