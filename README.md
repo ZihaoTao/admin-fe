@@ -1,27 +1,27 @@
-# 后台管理系统安装和启动方式
+# Backend Managment System
 
-## 环境依赖:
+## Environment:
 ```
-安装 nodejs v6.12.3版本
-安装 yarn
-```
-
-## 项目初始化方式:
-```
-安装依赖包： yarn
+install nodejs v6.12.3
+install yarn
 ```
 
-## 开发模式运行:
+## Initialization:
+```
+install： yarn
+```
+
+## run dev mode:
 ```
 yarn run dev
 ```
 
-## 线上打包:
-Mac / Linux系统：
+## run dist:
+Mac / Linux：
 ```
 yarn run dist
 ```
-Windows系统：
+Windows：
 ```
 yarn run dist_win
 ```
