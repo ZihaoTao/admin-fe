@@ -2,7 +2,7 @@
 * @Author: Zihao Tao
 * @Date:   2018-11-26 23:13:15
 * @Last Modified by:   Zihao Tao
-* @Last Modified time: 2018-12-02 14:10:01
+* @Last Modified time: 2018-12-02 14:14:37
 */
 const path              = require('path');
 const webpack           = require('webpack');
@@ -102,16 +102,6 @@ module.exports = {
         port: 8086,
         historyApiFallback: {
             index: '/dist/index.html'
-        },
-        proxy : {
-            '/manage' : {
-                target: 'http://admintest.happymmall.com',
-                changeOrigin : true
-            },
-            '/user/logout.do' : {
-                target: 'http://admintest.happymmall.com',
-                changeOrigin : true
-            }
         }
     }
 };

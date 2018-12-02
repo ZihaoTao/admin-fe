@@ -30,8 +30,9 @@
     "rc-pagination": "1.15.1",
     "react": "16.2.0",
     "react-dom": "16.2.0",
-    "react-redux": "2.0.0",
+    "react-redux": "^5.1.1",
     "react-router-dom": "4.2.2",
+    "redux": "^4.0.1",
     "simditor": "^2.3.23"
   }
 }
