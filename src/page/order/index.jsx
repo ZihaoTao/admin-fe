@@ -67,7 +67,7 @@ class OrderList extends React.Component{
         let tableHeads = ['Order Number', 'Receiver', 'Order Status', 'Order Price', 'Create Time', 'Operation'];
         return (
             <div id="page-wrapper">
-                <PageTitle title="订单列表" />
+                <PageTitle title="Order List" />
                 <ListSearch onSearch={(orderNumber) => {this.onSearch(orderNumber)}}/>
                 <TableList tableHeads={tableHeads}>
                     {

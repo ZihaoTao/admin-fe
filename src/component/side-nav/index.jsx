@@ -17,6 +17,21 @@ class NavSide extends React.Component {
                             </NavLink>
                         </li>
                         <li className="active">
+                            <Link to="/product">
+                                <i className="fa fa-list"></i>
+                                <span>Product</span>
+                                <span className="fa arrow"></span>
+                            </Link>
+                            <ul className="nav nav-second-level collapse in">
+                                <li>
+                                    <NavLink to="/product" activeClassName="active-menu">Product Management</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/product-category" activeClassName="active-menu">Category Management</NavLink>
+                                </li>
+                            </ul>
+                        </li>
+                        <li className="active">
                             <Link to="/order">
                                 <i className="fa fa-check-square-o"></i>
                                 <span>Order</span>
