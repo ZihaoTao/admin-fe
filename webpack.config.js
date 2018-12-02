@@ -2,10 +2,10 @@
 * @Author: Zihao Tao
 * @Date:   2018-11-26 23:13:15
 * @Last Modified by:   Zihao Tao
-* @Last Modified time: 2018-12-02 01:49:09
+* @Last Modified time: 2018-12-02 14:10:01
 */
-const path = require('path');
-const webpack = require('webpack');
+const path              = require('path');
+const webpack           = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -16,20 +16,20 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         publicPath: WEBPACK_ENV === 'dev' 
-            ? '/dist/' : '//s.taozihao.xyz/admin-fe/dist/',
+            ? '/dist/' : '//s.jianliwu.com/admin-v2-fe/dist/',
         filename: 'js/app.js'
     },
     resolve: {
-        alias: {
-            page: path.resolve(__dirname,'src/page'),
-            component: path.resolve(__dirname,'src/component'),
-            util: path.resolve(__dirname,'src/util'),
-            service: path.resolve(__dirname,'src/service')
+        alias : {
+            page        : path.resolve(__dirname, 'src/page'),
+            component   : path.resolve(__dirname, 'src/component'),
+            util        : path.resolve(__dirname, 'src/util'),
+            service     : path.resolve(__dirname, 'src/service')
         }
     },
     module: {
         rules: [
-            // react
+            // react(jsx)语法的处理
             {
                 test: /\.jsx$/,
                 exclude: /(node_modules)/,
@@ -40,23 +40,23 @@ module.exports = {
                     }
                 }
             },
-            // css file
+            // css文件的处理
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
                     fallback: "style-loader",
                     use: "css-loader"
                 })
-            }, 
-            // sass file
+            },
+            // sass文件的处理
             {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
-                    fallback: "style-loader",
+                    fallback: 'style-loader',
                     use: ['css-loader', 'sass-loader']
                 })
             },
-            // pic
+            // 图片的配置
             {
                 test: /\.(png|jpg|gif)$/,
                 use: [
@@ -69,7 +69,7 @@ module.exports = {
                     }
                 ]
             },
-            // font
+            // 字体图标的配置
             {
                 test: /\.(eot|svg|ttf|woff|woff2|otf)$/,
                 use: [
@@ -85,16 +85,16 @@ module.exports = {
         ]
     },
     plugins: [
-        // html
+        // 处理html文件 
         new HtmlWebpackPlugin({
             template: './src/index.html',
             favicon: './favicon.ico'
         }),
-        // css
+        // 独立css文件
         new ExtractTextPlugin("css/[name].css"),
-        // extract common module
+        // 提出公共模块
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'common',
+            name : 'common',
             filename: 'js/base.js'
         })
     ],
@@ -103,15 +103,15 @@ module.exports = {
         historyApiFallback: {
             index: '/dist/index.html'
         },
-        proxy: {
-            '/manage': {
-                target: 'http://admin.taozihao.xyz',
-                changeOrigin: true
+        proxy : {
+            '/manage' : {
+                target: 'http://admintest.happymmall.com',
+                changeOrigin : true
             },
-            '/user': {
-                target: 'http://admin.taozihao.xyz',
-                changeOrigin: true
+            '/user/logout.do' : {
+                target: 'http://admintest.happymmall.com',
+                changeOrigin : true
             }
         }
     }
-}; 
+};
