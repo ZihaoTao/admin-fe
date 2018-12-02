@@ -46,6 +46,13 @@ class Simditor extends SimpleModule
       uploadOpts = if typeof @opts.upload == 'object' then @opts.upload else {}
       @uploader = simpleUploader(uploadOpts)
 
+    form = @textarea.closest 'form'
+    if form.length
+      form.on 'submit.simditor-' + @id, =>
+        @sync()
+      form.on 'reset.simditor-' + @id, =>
+        @setValue ''
+
     # set default value after all plugins are connected
     @on 'initialized', =>
       if @opts.placeholder
@@ -115,7 +122,7 @@ class Simditor extends SimpleModule
   setValue: (val) ->
     @hidePopover()
     @textarea.val val
-    @body.get(0).innerHTML = if DOMPurify then DOMPurify.sanitize(val) else val
+    @body.get(0).innerHTML = val
 
     @formatter.format()
     @formatter.decorate()

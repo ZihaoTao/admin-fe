@@ -88,13 +88,13 @@
     </div>
 </script>
 
-<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript" src="node_modules/simple-module/dist/simple-module.js"></script>
-<script type="text/javascript" src="dist/simple-uploader.js"></script>
+<script type="text/javascript" src="vendor/bower/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="vendor/bower/simple-module/lib/module.js"></script>
+<script type="text/javascript" src="lib/uploader.js"></script>
 <script type="text/javascript">
 
 $(function() {
-    var uploader = new SimpleUploader({
+    var uploader = simple.uploader({
         url: '/upload'
     });
 
@@ -140,3 +140,4 @@ $(function() {
 </body>
 
 </html>
+

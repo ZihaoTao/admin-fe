@@ -1,8 +1,8 @@
 /*
-* @Author: Zihao Tao
-* @Date:   2018-11-26 23:13:15
-* @Last Modified by:   Zihao Tao
-* @Last Modified time: 2018-12-02 14:21:40
+* @Author: Rosen
+* @Date:   2018-01-13 11:26:52
+* @Last Modified by:   tino
+* @Last Modified time: 2018-12-02 15:02:41
 */
 const path              = require('path');
 const webpack           = require('webpack');
@@ -29,7 +29,7 @@ module.exports = {
     },
     module: {
         rules: [
-        
+            // react(jsx)语法的处理
             {
                 test: /\.jsx$/,
                 exclude: /(node_modules)/,
@@ -40,7 +40,7 @@ module.exports = {
                     }
                 }
             },
-        
+            // css文件的处理
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
@@ -48,7 +48,7 @@ module.exports = {
                     use: "css-loader"
                 })
             },
-          
+            // sass文件的处理
             {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
@@ -56,7 +56,7 @@ module.exports = {
                     use: ['css-loader', 'sass-loader']
                 })
             },
-     
+            // 图片的配置
             {
                 test: /\.(png|jpg|gif)$/,
                 use: [
@@ -69,7 +69,7 @@ module.exports = {
                     }
                 ]
             },
-       
+            // 字体图标的配置
             {
                 test: /\.(eot|svg|ttf|woff|woff2|otf)$/,
                 use: [
@@ -85,14 +85,14 @@ module.exports = {
         ]
     },
     plugins: [
- 
+        // 处理html文件 
         new HtmlWebpackPlugin({
             template: './src/index.html',
             favicon: './favicon.ico'
         }),
-
+        // 独立css文件
         new ExtractTextPlugin("css/[name].css"),
-     
+        // 提出公共模块
         new webpack.optimize.CommonsChunkPlugin({
             name : 'common',
             filename: 'js/base.js'
@@ -102,6 +102,16 @@ module.exports = {
         port: 8086,
         historyApiFallback: {
             index: '/dist/index.html'
+        },
+        proxy : {
+            '/manage' : {
+                target: 'http://admin.taozihao.xyz',
+                changeOrigin : true
+            },
+            '/user/logout.do' : {
+                target: 'http://admin.taozihao.xyz',
+                changeOrigin : true
+            }
         }
     }
 };
