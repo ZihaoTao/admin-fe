@@ -1,27 +1,28 @@
-/*
-* @Author: Zihao Tao
-* @Date:   2018-11-26 23:10:54
-* @Last Modified by:   Zihao Tao
-* @Last Modified time: 2018-11-26 23:52:09
-*/
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Switch, Redirect, Route, Link } from 'react-router-dom';
+import React            from 'react';
+import ReactDOM         from 'react-dom';
+import { BrowserRouter as Router, Switch, Redirect, Route, Link } from 'react-router-dom'
 
-import Home from 'page/home/index.jsx';
-import Layout from 'component/layout/index.jsx';
-import Login from 'page/login/index.jsx';
-import UserList from 'page/user/index.jsx';
-import ErrorPage from 'page/error/index.jsx';
-class App extends React.Component {
-    render() {
+import Layout           from 'component/layout/index.jsx';
+import Home             from 'page/home/index.jsx';
+import ProductRouter    from 'page/product/router.jsx';
+import Login            from 'page/login/index.jsx';
+import OrderList        from 'page/order/index.jsx';
+import OrderDetail      from 'page/order/detail.jsx';
+import UserList         from 'page/user/index.jsx';
+import ErrorPage        from 'page/error/index.jsx';
+
+class App extends React.Component{
+    render(){
         let LayoutRouter = (
-            <Layout>
+            <Layout> 
                 <Switch>
                     <Route exact path="/" component={Home}/>
-                    <Route path="/product" component={Home}/>
-                    <Route path="/product-category" component={Home}/>
+                    <Route path="/product" component={ProductRouter}/>
+                    <Route path="/product-category" component={ProductRouter}/>
+                    <Route path="/order/index" component={OrderList}/>
+                    <Route path="/order/detail/:orderNumber" component={OrderDetail}/>
                     <Route path="/user/index" component={UserList}/>
+                    <Redirect exact from="/order" to="/order/index"/>
                     <Redirect exact from="/user" to="/user/index"/>
                     <Route component={ErrorPage}/>
                 </Switch>
@@ -31,15 +32,15 @@ class App extends React.Component {
             <Router>
                 <Switch>
                     <Route path="/login" component={Login}/>
-                    <Route path="/" render={props => LayoutRouter}/>
-                    
+                    <Route path="/" render={ props => LayoutRouter}/>
                 </Switch>
-            </Router>           
+            </Router>
         )
     }
 }
 
+
 ReactDOM.render(
-    <App/>,
+    <App />,
     document.getElementById('app')
 );

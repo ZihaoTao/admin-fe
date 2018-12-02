@@ -3,6 +3,7 @@ import PageTitle from 'component/page-title/index.jsx';
 import { Link } from 'react-router-dom';
 import Pagination from 'util/pagination/index.jsx';
 import User from 'service/user-service.jsx'
+import TableList    from 'util/table-list/index.jsx';
 import Mutil from 'util/mm.jsx';
 
 const _mm = new Mutil();
@@ -53,34 +54,13 @@ class UserList extends React.Component {
                 </tr>
             );
         });
-        let listError = (
-            <tr>
-                <td colSpan="5" className="text-center">
-                    {this.state.firstLoading ? 'Loading ...' : 'Cannot find the result.'}</td>
-            </tr>
-        );
-        let tableBody = this.state.list.length > 0 ? listBody : listError;
+        
         return (
             <div id="page-wrapper">
                 <PageTitle title="User List"/>
-                <div className="row">
-                    <div className="col-md-12">
-                        <table className="table table-striped table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Username</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
-                                    <th>Create Time</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {tableBody}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                <TableList tableHeads={['ID', 'Username', 'Email', 'Phone', 'Create Time']}>
+                    {listBody}
+                </TableList>
                 <Pagination current={this.state.pageNum} 
                     total={this.state.total} 
                     onChange={(pageNum) => {this.onPageNumChange(pageNum)}}/>
