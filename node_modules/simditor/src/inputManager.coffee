@@ -108,7 +108,6 @@ class InputManager extends SimpleModule
     # meta + enter: submit form
     submitKey = if @editor.util.os.mac then 'cmd+enter' else 'ctrl+enter'
     @editor.hotkeys.add submitKey, (e) =>
-      @editor.sync()
       @editor.el.closest('form')
         .find('button:submit')
         .click()
