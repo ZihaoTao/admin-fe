@@ -30,9 +30,6 @@ class MUtil {
             result = queryString.match(reg);
         return result ? decodeURIComponent(result[2]) : null;
     }
-    successTips(msg) {
-        alert(msg || 'Success.');
-    }
     errorTips(errMsg) {
         alert(errMsg || 'Something is wrong.');
     }

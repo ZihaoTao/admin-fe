@@ -1,9 +1,3 @@
-/*
-* @Author: Rosen
-* @Date:   2018-02-02 12:24:13
-* @Last Modified by:   Rosen
-* @Last Modified time: 2018-02-02 16:29:06
-*/
 import React        from 'react';
 import FileUpload   from './react-fileupload.jsx';
 

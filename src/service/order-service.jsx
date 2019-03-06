@@ -1,9 +1,3 @@
-/*
-* @Author: Rosen
-* @Date:   2018-02-05 13:17:10
-* @Last Modified by:   Rosen
-* @Last Modified time: 2018-02-05 15:49:32
-*/
 import MUtil    from 'util/mm.jsx'
 
 const _mm       = new MUtil();
