@@ -43,7 +43,7 @@ class NavTop extends React.Component {
                             <li>
                                 <a onClick={() => {this.onLogout()}}>
                                     <i className="fa fa-sign-out fa-fw"></i>
-                                    <span>Log out</span>
+                                    <span>Log in / Log out</span>
                                 </a>
                             </li>
                         </ul>
