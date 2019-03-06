@@ -1,7 +1,7 @@
 import React        from 'react';
 import Simditor     from 'simditor';
 import 'simditor/styles/simditor.scss';
-import './index.scss';
+import './index.scss'; 
 class RichEditor extends React.Component{
     constructor(props){
         super(props);
@@ -16,9 +16,10 @@ class RichEditor extends React.Component{
     }
     loadEditor(){
         let element = this.refs['textarea'];
+        Simditor.locale = 'en-US'
         this.simditor = new Simditor({
             textarea: $(element),
-            defaultValue: this.props.placeholder || '请输入内容',
+            defaultValue: this.props.placeholder || 'please input your content',
             upload: {
                 url             : '/manage/product/richtext_img_upload.do',
                 defaultImage    : '',
