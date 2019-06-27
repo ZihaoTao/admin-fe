@@ -1,24 +1,39 @@
+import axios from 'axios';
+
 class MUtil {
     request(param) {
         return new Promise((resolve, reject) => {
-            $.ajax({
-                type: param.type || 'get',
-                url: param.url || '',
-                dataType: param.dataType || 'json',
-                data: param.data || null,
-                success: res => {
-                    if(0 === res.status) {
-                        typeof resolve === 'function' && resolve(res.data, res.msg);
-                    } else if (10 === res.status) {
-                        this.doLogin();
-                    } else {
-                        typeof reject === 'function' && reject(res.msg || res.data);
-                    }
-                }, 
-                error: err => {
-                    typeof reject === 'function' && reject(err.statusText);
-                }
-            }); 
+            if(param.type === 'get') {
+                axios.get(param.url)
+                    .then(res => {
+                        if(0 === res.status) {
+                            typeof resolve === 'function' && resolve(res.data.data, res.data.msg);
+                        } else if (10 === res.status) {
+                            this.doLogin();
+                        } else {
+                            typeof reject === 'function' && reject(res.data.msg || res.data.data);
+                        }
+                    })
+                    .catch(err => {
+                        typeof reject === 'function' && reject(res.data.msg || res.data.data);
+                    })
+
+            } else {
+                axios.post(param.url, param.data)
+                    .then(res => {
+                        if(0 === res.status) {
+                            typeof resolve === 'function' && resolve(res.data.data, res.data.msg);
+                        } else if (10 === res.status) {
+                            this.doLogin();
+                        } else {
+                            console.log(res)
+                            typeof reject === 'function' && reject(res.data.msg || res.data.data);
+                        }
+                    })
+                    .catch(err => {
+                        typeof reject === 'function' && reject(res.data.msg || res.data.data);
+                    })
+            }
         }); 
     }
     doLogin() {
