@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import './index.scss';
 import Statistic from 'service/statistic-service.jsx'
 import Mutil from 'util/mm.jsx';
+import User from 'service/user-service.jsx'
 
 const _mm = new Mutil();
 const _statistic = new Statistic();
+const _user = new User();
 
 class Home extends React.Component {
     constructor(props) {
@@ -18,6 +20,22 @@ class Home extends React.Component {
         };
     }
     componentDidMount() {
+        let loginInfo = {
+            username: 'admin',
+            password: 'Tzh75335'
+        };
+        let checkResult = _user.checkLoginInfo(loginInfo);
+        if(checkResult.status) {
+            _user.login(loginInfo)
+                .then((res) => {
+                    _mm.setStorage('userInfo', res);
+                    this.props.history.push(this.state.redirect)
+            }, (errMsg) => {
+                _mm.errorTips(errMsg);
+            })
+        } else {
+            _mm.errorTips(checkResult.msg);
+        }
         this.loadCount();
     }
     loadCount() {

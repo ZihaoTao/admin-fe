@@ -10,8 +10,8 @@ class User {
         }); 
     }
     checkLoginInfo(loginInfo) {
-        let username = $.trim(loginInfo.username),
-            password = $.trim(loginInfo.password);
+        let username = (loginInfo.username).trim(),
+            password = (loginInfo.password).trim();
         if(typeof username != 'string' || username.length === 0) {
             return {
                 status: false,
