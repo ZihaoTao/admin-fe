@@ -29,7 +29,6 @@ class Home extends React.Component {
             _user.login(loginInfo)
                 .then((res) => {
                     _mm.setStorage('userInfo', res);
-                    this.props.history.push(this.state.redirect)
             }, (errMsg) => {
                 _mm.errorTips(errMsg);
             })
