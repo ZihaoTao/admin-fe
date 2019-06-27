@@ -1,4 +1,4 @@
-import axios from 'axios';
+import $ from 'jquery';
 
 class MUtil {
     request(param) {

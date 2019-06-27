@@ -16,7 +16,7 @@ class NavTop extends React.Component {
     onLogout() {
         _user.logout().then(res => {
             _mm.removeStorage('userInfo');
-            window.location.href = './login';
+            window.location.href = '/';
         }, errMsg => {
             _mm.errorTips(errMsg);
         });
@@ -31,18 +31,15 @@ class NavTop extends React.Component {
                 <ul className="nav navbar-top-links navbar-right">
                     <li className="dropdown">
                         <a className="dropdown-toggle" href="javascript:;">
-                            <i className="fa fa-user fa-fw"></i>
                             {
                                 this.state.username 
                                 ? <span>Welcome,{this.state.username}</span> 
                                 : <span>Welcome</span>
                             }
-                            <i className="fa fa-caret-down"></i>
                         </a>
                         <ul className="dropdown-menu dropdown-user">
                             <li>
                                 <a onClick={() => {this.onLogout()}}>
-                                    <i className="fa fa-sign-out fa-fw"></i>
                                     <span>Log in / Log out</span>
                                 </a>
                             </li>
