@@ -32,7 +32,7 @@ class App extends React.Component{
             <Router>
                 <Switch>
                     <Route path="/login" component={Login}/>
-                    <Route render={ props => LayoutRouter}/>
+                    <Route path="/" render={ props => LayoutRouter}/>
                 </Switch>
             </Router>
         )
