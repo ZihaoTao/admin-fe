@@ -20,21 +20,6 @@ class Home extends React.Component {
         };
     }
     componentDidMount() {
-        let loginInfo = {
-            username: 'admin',
-            password: 'Tzh75335'
-        };
-        let checkResult = _user.checkLoginInfo(loginInfo);
-        if(checkResult.status) {
-            _user.login(loginInfo)
-                .then((res) => {
-                    _mm.setStorage('userInfo', res);
-            }, (errMsg) => {
-                _mm.errorTips(errMsg);
-            })
-        } else {
-            _mm.errorTips(checkResult.msg);
-        }
         this.loadCount();
     }
     loadCount() {

@@ -1,36 +1,25 @@
-import axios from 'axios';
-
 class MUtil {
     request(param) {
-        if(param.type === 'get') {
-            return axios.get(param.url)
-                        .then(res => {
-                            if(0 === res.status) {
-                                typeof resolve === 'function' && resolve(res.data, res.msg);
-                            } else if (10 === res.status) {
-                                this.doLogin();
-                            } else {
-                                typeof reject === 'function' && reject(res.msg || res.data);
-                            }
-                        })
-                        .catch(err => {
-                            typeof reject === 'function' && reject(err.statusText);
-                        })
-        } else {
-            return axios.post(param.url, param.data)
-                        .then(res => {
-                            if(0 === res.status) {
-                                typeof resolve === 'function' && resolve(res.data, res.msg);
-                            } else if (10 === res.status) {
-                                this.doLogin();
-                            } else {
-                                typeof reject === 'function' && reject(res.msg || res.data);
-                            }
-                        })
-                        .catch(err => {
-                            typeof reject === 'function' && reject(err.statusText);
-                        })
-        }
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                type: param.type || 'get',
+                url: param.url || '',
+                dataType: param.dataType || 'json',
+                data: param.data || null,
+                success: res => {
+                    if(0 === res.status) {
+                        typeof resolve === 'function' && resolve(res.data, res.msg);
+                    } else if (10 === res.status) {
+                        this.doLogin();
+                    } else {
+                        typeof reject === 'function' && reject(res.msg || res.data);
+                    }
+                }, 
+                error: err => {
+                    typeof reject === 'function' && reject(err.statusText);
+                }
+            }); 
+        }); 
     }
     doLogin() {
         window.location.href = '/login?redirect=' + encodeURIComponent(window.location.pathname);
@@ -55,7 +44,7 @@ class MUtil {
         else if(['number', 'string', 'boolean'].indexOf(dataType) >= 0) {
             window.localStorage.setItem(name, data);
         } else {
-            alert('Network error.');
+            alert('Cannot put this type of data into local storage.');
         }
     }
     getStorage(name) {
