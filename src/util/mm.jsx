@@ -9,7 +9,6 @@ class MUtil {
                 dataType: param.dataType || 'json',
                 data: param.data || null,
                 success: res => {
-                    console.log(res);
                     if(0 === res.status) {
                         typeof resolve === 'function' && resolve(res.data, res.msg);
                     } else if (10 === res.status) {

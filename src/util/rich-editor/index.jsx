@@ -1,5 +1,6 @@
 import React        from 'react';
 import Simditor     from 'simditor';
+import $ from 'jquery';
 import 'simditor/styles/simditor.scss';
 import './index.scss'; 
 class RichEditor extends React.Component{
