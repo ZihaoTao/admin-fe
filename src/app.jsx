@@ -16,7 +16,7 @@ class App extends React.Component{
         let LayoutRouter = (
             <Layout> 
                 <Switch>
-                    <Route path="/home" component={Home}/>
+                    <Route exact path="/" component={Home}/>
                     <Route path="/product" component={ProductRouter}/>
                     <Route path="/product-category" component={ProductRouter}/>
                     <Route path="/order/index" component={OrderList}/>
@@ -31,7 +31,7 @@ class App extends React.Component{
         return (
             <Router>
                 <Switch>
-                    <Route exact path="/" component={Login}/>
+                    <Route path="/login" component={Login}/>
                     <Route render={ props => LayoutRouter}/>
                 </Switch>
             </Router>

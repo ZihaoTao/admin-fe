@@ -10,8 +10,8 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state={
-            username: 'admin',
-            password: 'Tzh75335',
+            username: '',
+            password: '',
             redirect: _mm.getUrlParam('redirect') || '/home'
         }
     }
@@ -19,11 +19,11 @@ class Login extends React.Component {
         document.title = 'Login - Pomegranate Admin'
     }
     onInputChange(e) {
-        // let inputName = e.target.name;
-        // let inputValue= e.target.value;
-        // this.setState( {
-        //     [inputName]: inputValue
-        // })
+        let inputName = e.target.name;
+        let inputValue= e.target.value;
+        this.setState( {
+            [inputName]: inputValue
+        })
     }
     onInputKeyUp(e) {
         if(e.keyCode === 13) {
