@@ -11,7 +11,7 @@ class NavSide extends React.Component {
                 <div className="sidebar-collapse">
                     <ul className="nav">
                         <li>
-                            <NavLink exact activeClassName="active-menu" to="/">
+                            <NavLink exact activeClassName="active-menu" to="/home">
                                 <span>HOME</span>
                             </NavLink>
                         </li>
