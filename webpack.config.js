@@ -10,7 +10,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         publicPath: WEBPACK_ENV === 'dev' 
-            ? '/dist/' : '//s.taozihao.xyz/admin-fe/dist/',
+            ? '/dist/' : '//s.fashionforconservation.xyz/admin-fe/dist/',
         filename: 'js/app.js'
     },
     resolve: {
@@ -99,11 +99,11 @@ module.exports = {
         },
         proxy : {
             '/manage' : {
-                target: 'http://www.taozihao.xyz',
+                target: 'http://www.fashionforconservation.xyz',
                 changeOrigin : true
             },
             '/user/logout.do' : {
-                target: 'http://www.taozihao.xyz',
+                target: 'http://www.fashionforconservation.xyz',
                 changeOrigin : true
             }
         }
