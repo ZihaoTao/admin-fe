@@ -6,7 +6,7 @@ class PageTitle extends React.Component {
         super(props);
     }
     componentWillMount() {
-        document.title = this.props.title + ' - Pomegranate Admin';
+        document.title = this.props.title + ' - FashionForConservation Admin';
         {this.props.children};
     }
     render() {
